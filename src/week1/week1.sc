@@ -2,16 +2,20 @@ package week1
 
 //Comment22
 
+
+//update
+
+//my update
+
 object week1
 {
-  def abs(x: Double):Double = if (x < 0) -x else x//> abs: (x: Double)
+  def abs(x: Double):Double = if (x < 0) -x else x//> abs: (x: Double)Double
   
   /**
   	* Computes square root of the function
   */
   def sqrt(x:Double) : Double =
   {
-  	val y:Int
  		def sqrtItr (guess:Double): Double =
   	{
 	  	def isGoodEnough(guess:Double) : Boolean =
