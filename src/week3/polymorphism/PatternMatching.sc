@@ -19,4 +19,16 @@ object PatternMatching
   }                                               //> show: (expr: week3.polymorphism.PatternMatching.Expr)String
   
   show(Sum(Sum(Number(3), Number(4)), Number(2))) //> res0: String = (+ (+ 3 4) 2)
+  
+  
+  def addList(x: List[Int]) : Int =
+  {
+  	x match
+  	{
+  		case y :: Nil => y
+  		case y :: xs => y + addList(xs)
+  	}
+  }                                               //> addList: (x: List[Int])Int
+  
+  addList(1 :: 2 :: 3 :: 4 :: 5 :: Nil)           //> res1: Int = 15
 }
