@@ -78,4 +78,89 @@ object PatternMatching
 	
 	flatten(List(List(1, List(2, 3, 4, 5, 6)), 3, 4))
                                                   //> res5: List[Any] = List(1, 2, 3, 4, 5, 6, 3, 4)
+                                                  
+  def firstN (x : List[Int], n : Int): List[Int] =
+  {
+  	def firstNHelper(seenSoFar: Int) : List[Int] =
+  	{
+  		seenSoFar match
+  		{
+  			case 0 => Nil
+  			
+  			case y =>
+  			{
+  				x match
+  				{
+  					case head :: rest => head :: firstN(rest, seenSoFar - 1)
+  				}
+  			}
+  		}
+  	}
+  	
+  	firstNHelper(n)
+  }                                               //> firstN: (x: List[Int], n: Int)List[Int]
+  
+  
+	def dropN (x : List[Int], n : Int): List[Int] =
+  {
+  	def dropNHelper(seenSoFar: Int) : List[Int] =
+  	{
+  		seenSoFar match
+  		{
+  			case 0 => x
+  			
+  			case y =>
+  			{
+  				x match
+  				{
+  					case head :: rest => dropN(rest, seenSoFar - 1)
+  				}
+  			}
+  		}
+  	}
+  	
+  	dropNHelper(n)
+  }                                               //> dropN: (x: List[Int], n: Int)List[Int]
+  
+  
+  firstN(List(1, 2, 3, 4, 5), 2)                  //> res6: List[Int] = List(1, 2)
+  dropN(List(1, 2, 3, 4, 5), 2)                   //> res7: List[Int] = List(3, 4, 5)
+  
+	def mergeSortedLists(x: List[Int], y: List[Int]) : List[Int] =
+	{
+		x match
+		{
+			case Nil => y
+			case headX :: restX =>
+			{
+				y match
+				{
+					case Nil => x
+					
+					case headY :: restY =>
+					{
+						if ( headX <= headY) headX :: mergeSortedLists(restX, y) else mergeSortedLists(y, x)
+					}
+				}
+			}
+		}
+	}                                         //> mergeSortedLists: (x: List[Int], y: List[Int])List[Int]
+	
+	def mergeSort(x: List[Int]): List[Int] =
+	{
+		val y: Int = x.size / 2
+		
+		if (y == 0) x
+		else
+		{
+			mergeSortedLists(mergeSort(firstN(x,y)), mergeSort(dropN(x,y)))
+		}
+	}                                         //> mergeSort: (x: List[Int])List[Int]
+	
+	mergeSortedLists(List(1, 3, 4, 5, 7, 9), List(2, 4, 6, 8, 10))
+                                                  //> res8: List[Int] = List(1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10)
+                                                  
+	mergeSort(List(10, 9, 8, 7, 6, 66, 4, 3, 2, 1))
+                                                  //> res9: List[Int] = List(1, 2, 3, 4, 6, 7, 8, 9, 10, 66)
+	
 }
