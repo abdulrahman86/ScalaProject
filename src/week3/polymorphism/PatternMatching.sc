@@ -1,5 +1,7 @@
 package week3.polymorphism
 
+import math.Ordering
+
 object PatternMatching
 {
   trait Expr
@@ -160,7 +162,8 @@ object PatternMatching
 	mergeSortedLists(List(1, 3, 4, 5, 7, 9), List(2, 4, 6, 8, 10))
                                                   //> res8: List[Int] = List(1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10)
                                                   
-	mergeSort(List(10, 9, 8, 7, 6, 66, 4, 3, 2, 1))
-                                                  //> res9: List[Int] = List(1, 2, 3, 4, 6, 7, 8, 9, 10, 66)
+	mergeSort(List(10, 9, 8, 7, 6, 66, 4, 3, 2, 1, 4, 5, 6, 6, 4 , 5, 6, 7, 4, 6, 8))
+                                                  //> res9: List[Int] = List(1, 2, 3, 4, 4, 4, 4, 5, 5, 6, 6, 6, 6, 6, 7, 7, 8, 8
+                                                  //| , 9, 10, 66)
 	
 }
