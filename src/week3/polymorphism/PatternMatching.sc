@@ -31,4 +31,51 @@ object PatternMatching
   }                                               //> addList: (x: List[Int])Int
   
   addList(1 :: 2 :: 3 :: 4 :: 5 :: Nil)           //> res1: Int = 15
+  
+  
+  def insertIntoSortedList(x: Int, list : List[Int] ) : List[Int] =
+  {
+  	list match
+  	{
+  		case Nil => List(x)
+  		case head :: xs =>
+  		{
+  			if (head > x) x :: head :: xs else head :: insertIntoSortedList(x, xs)
+  		}
+  	}
+  }                                               //> insertIntoSortedList: (x: Int, list: List[Int])List[Int]
+  
+  insertIntoSortedList(1, 2 :: 4 :: 5 :: Nil)     //> res2: List[Int] = List(1, 2, 4, 5)
+  
+  
+  def sortList(x: List[Int]) : List[Int] =
+  {
+  	x  match
+  	{
+  		case Nil => Nil
+  		case x :: Nil => List(x)
+  		case x :: xs =>
+  		{
+  			insertIntoSortedList(x, sortList(xs))
+  		}
+  	}
+  
+  }                                               //> sortList: (x: List[Int])List[Int]
+  
+  sortList(2 :: 3 :: 4 :: 5 :: 1 :: Nil)          //> res3: List[Int] = List(1, 2, 3, 4, 5)
+
+	
+	(1 :: 2 :: Nil) :: 3 :: Nil               //> res4: List[Any] = List(List(1, 2), 3)
+	def flatten(x:List[Any]) : List[Any]=
+	{
+		x match
+		{
+			case Nil => Nil
+			case  (xh :: xhs) :: rest => flatten(xh :: xhs) ++ flatten(rest)
+			case  x :: rest => x :: flatten(rest)
+		}
+	}                                         //> flatten: (x: List[Any])List[Any]
+	
+	flatten(List(List(1, List(2, 3, 4, 5, 6)), 3, 4))
+                                                  //> res5: List[Any] = List(1, 2, 3, 4, 5, 6, 3, 4)
 }
