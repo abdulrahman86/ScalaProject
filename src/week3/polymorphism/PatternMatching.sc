@@ -8,6 +8,8 @@ object PatternMatching
   {
   }
   
+  Ordering.Int
+  
   case class Number(n: Int) extends Expr
   case class Sum(op1: Expr, op2: Expr) extends Expr
   
