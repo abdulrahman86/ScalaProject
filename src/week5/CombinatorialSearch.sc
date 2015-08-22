@@ -40,5 +40,5 @@ object CombinatorialSearch {
 	scalarProd(List(1,2,3), List(1,2,3))      //> res5: Double = 14.0
 	
 	for(i <- List(1,2,3); j<-List(4,5,6); if i + j > 7; k <- List(3,4,5); if  i + j + k > 13) yield i + j + k
-                                                  //> res6: List[Int] = List(11, 12, 13, 11, 12, 13, 12, 13, 14)
+                                                  //> res6: List[Int] = List(14)
 }

@@ -28,4 +28,9 @@ object Collections1
 	}                                         //> isPrime: (n: Int)Boolean
 	
 	isPrime(7)                                //> res5: Boolean = true
+	
+	    	def noConflict (x: Int, y: Int) =
+  	{
+  		Nil
+  	}                                         //> noConflict: (x: Int, y: Int)scala.collection.immutable.Nil.type
 }
