@@ -35,4 +35,6 @@ object Sets
   
   nQueens(2, 1)                                   //> res0: Set[List[(Int, Int)]] = Set(List((2,2), (1,1)))
   
+  //I am editting this.
+  
 }
